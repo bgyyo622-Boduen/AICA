@@ -1,0 +1,22 @@
+name: AICA Architecture Enforcement
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  verify-extensional-semantics:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Execute AICA Constraint Compiler
+        uses: boduen/aica-github-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
