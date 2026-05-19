@@ -1,0 +1,20 @@
+{
+  "$schema": "https://aica-framework.org/schemas/policy.json",
+  "policy_name": "ThreadLocal_State_Isolation",
+  "description": "Enforce explicit state passing. Ban implicit thread-bound or context-bound variable accesses.",
+  "severity": "CRITICAL",
+  "illegal_invocations": [
+    {
+      "pattern": "ThreadLocal.get",
+      "reason": "Violates state isolation. Must extract to an explicit Command/Context parameter."
+    },
+    {
+      "pattern": "SecurityContextHolder.getContext",
+      "reason": "Context-blind reading detected. Security identity must be passed via explicit arguments."
+    },
+    {
+      "pattern": "AsyncLocalStorage.getStore",
+      "reason": "Implicit async state tracking is non-deterministic in heterogeneous concurrent environments."
+    }
+  ]
+}
