@@ -2,7 +2,6 @@ import { ExtensionalIR } from "../core/extensional-projector";
 
 export class ConstraintIRBuilder {
   public static build(ir: ExtensionalIR): string {
-    // 構建 AICA 約束中介表示 (IR)
     return `[AICA_CONSTRAINT_VIOLATION]
 - File: ${ir.originalViolation.file} (Line ${ir.originalViolation.line})
 - Target: ${ir.originalViolation.pattern}
