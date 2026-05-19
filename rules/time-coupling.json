@@ -1,0 +1,20 @@
+{
+  "$schema": "https://aica-framework.org/schemas/policy.json",
+  "policy_name": "Temporal_Decoupling",
+  "description": "Ban direct system clock access to maintain extensional equivalence and deterministic testing.",
+  "severity": "HIGH",
+  "illegal_invocations": [
+    {
+      "pattern": "Date.now",
+      "reason": "Implicit temporal dependency. Inject a Clock or TimeProvider interface."
+    },
+    {
+      "pattern": "System.currentTimeMillis",
+      "reason": "Implicit temporal dependency. Use explicit java.time.Clock injection."
+    },
+    {
+      "pattern": "new Date()",
+      "reason": "Uncontrolled instantiation of temporal state."
+    }
+  ]
+}
