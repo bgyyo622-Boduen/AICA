@@ -7,9 +7,6 @@ export class PullRequestReviewer {
     this.octokit = github.getOctokit(token);
   }
 
-  /**
-   * 於指定的程式碼行數注入約束編譯器之中介表示 (IR)
-   */
   public async postConstraintPrompt(
     owner: string,
     repo: string,
