@@ -1,0 +1,9 @@
+name: 'AICA Neuro-Symbolic Gatekeeper'
+description: 'Enforce extensional semantics and reject implicit coupling in AI-generated code.'
+inputs:
+  github-token:
+    description: 'GitHub token for injecting constraint prompts into PRs'
+    required: true
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
