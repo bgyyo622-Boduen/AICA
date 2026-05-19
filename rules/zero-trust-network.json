@@ -1,0 +1,20 @@
+{
+  "$schema": "https://aica-framework.org/schemas/policy.json",
+  "policy_name": "Zero_Trust_Network_Enforcement",
+  "description": "Prevent AI from hallucinating direct outbound connections that bypass network isolation policies.",
+  "severity": "CRITICAL",
+  "illegal_invocations": [
+    {
+      "pattern": "fetch",
+      "reason": "Direct unmanaged fetch call detected. Use the internal bounded API client wrapper."
+    },
+    {
+      "pattern": "axios.get",
+      "reason": "Direct axios usage breaks trace propagation and retry policies. Inject the internal HttpAgent."
+    },
+    {
+      "pattern": "HttpURLConnection",
+      "reason": "Low-level unmanaged network stream. Violates zero-trust boundaries."
+    }
+  ]
+}
