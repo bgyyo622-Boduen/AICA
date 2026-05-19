@@ -8,7 +8,7 @@ export class PromptGenerator {
   public static generateAntiCorruptionPrompt(ir: ExtensionalIR): string {
     const irString = ConstraintIRBuilder.build(ir);
     
-    return `### 🛑 AICA 架構邊界攔截 (Architecture Boundary Violation)
+    return `### AICA 架構邊界攔截 (Architecture Boundary Violation)
 
 **偵測到隱性耦合 (Implicit Coupling)！** 你的程式碼試圖讀取未經宣告的環境變數或全域狀態，這將導致系統在弱記憶體模型或非同步環境下喪失匯合性 (Non-confluence)。
 
@@ -16,7 +16,7 @@ export class PromptGenerator {
 ${irString}
 \`\`\`
 
-#### 🛠️ 修復指令 (Copy this prompt to your AI assistant):
+#### 修復指令 (Copy this prompt to your AI assistant):
 > **System:** You are constrained by the AICA Extensionalization protocol.
 > **Task:** Fix the implicit coupling at line ${ir.originalViolation.line}.
 > **Constraint:** ${ir.suggestedAction}
