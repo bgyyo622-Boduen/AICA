@@ -4,6 +4,9 @@ inputs:
   github-token:
     description: 'GitHub token for injecting constraint prompts into PRs'
     required: true
+  rules-path:
+    description: 'Explicit path to the JSON policy contracts directory'
+    required: true
 runs:
   using: 'node20'
   main: 'dist/index.js'
